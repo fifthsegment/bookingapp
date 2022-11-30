@@ -1,45 +1,52 @@
 {
-  "name": "nextacular",
-  "version": "1.2.0-Beta",
+  "name": "bookingapp",
+  "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
-  },
   "dependencies": {
-    "@headlessui/react": "^1.4.2",
-    "@heroicons/react": "^1.0.5",
-    "@next-auth/prisma-adapter": "^1.0.1",
-    "@prisma/client": "^3.10.0",
-    "@stripe/stripe-js": "^1.23.0",
-    "date-fns": "^2.28.0",
-    "express-validator": "^6.14.0",
-    "logsnag": "^0.0.6",
-    "micro": "^9.3.4",
-    "next": "^12.1.6",
-    "next-auth": "^4.10.3",
-    "next-themes": "^0.1.1",
-    "nodemailer": "^6.7.2",
-    "react": "^17.0.2",
-    "react-copy-to-clipboard": "^5.0.4",
-    "react-dom": "^17.0.2",
-    "react-ga": "^3.3.0",
-    "react-hot-toast": "^2.2.0",
-    "react-topbar-progress-indicator": "^4.1.0",
-    "slugify": "^1.6.5",
-    "stripe": "^8.203.0",
-    "swr": "^1.2.1",
-    "validator": "^13.7.0"
+    "@pankod/refine-cli": "^1.2.0",
+    "@pankod/refine-core": "^3.18.0",
+    "@pankod/refine-inferencer": "^1.2.0",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.23",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.0",
+    "web-vitals": "^1.1.1",
+    "@pankod/refine-simple-rest": "^3.18.0",
+    "@pankod/refine-antd": "^3.18.0",
+    "@pankod/refine-react-router-v6": "^3.18.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.1",
-    "eslint": "^8.14.0",
-    "eslint-config-next": "^12.1.6",
-    "postcss": "^8.4.5",
-    "prisma": "^3.10.0",
-    "tailwindcss": "^3.0.11"
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@types/node": "^12.20.10",
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "dev": "PORT=3006 refine start",
+    "build": "refine build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "refine": "refine"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
