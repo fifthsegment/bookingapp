@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HttpError, IResourceComponentsProps } from "@pankod/refine-core";
 
 import {
@@ -16,17 +16,26 @@ import { Permission, Role } from "@pankod/refine-appwrite";
 import MDEditor from "@uiw/react-md-editor";
 
 import { IPost, IPostVariables, ICategory } from "interfaces";
+import { authProvider } from "authProvider";
 
 export const PostsCreate: React.FC<IResourceComponentsProps> = () => {
-    
+    const [identity, setIdentity] = useState<any>(undefined);
+    useEffect(() => {
+        (async () => {
+            // @ts-ignore
+            const identity = await authProvider?.getUserIdentity();
+            setIdentity(identity)
+        })()
+    }, []);
+
     const { formProps, saveButtonProps } = useForm<
         IPost,
         HttpError,
         IPostVariables
     >({
     metaData: {
-        writePermissions: [Permission.read(Role.user("232"))],
-        readPermissions: [Permission.read(Role.user("232"))],
+        writePermissions: [Permission.read(Role.user(identity?.$id))],
+        readPermissions: [Permission.read(Role.user(identity?.$id))],
     },
 });
 
@@ -58,6 +67,7 @@ export const PostsCreate: React.FC<IResourceComponentsProps> = () => {
                         },
                     ]}
                 >
+                    {identity?.$id}
                     <Input />
                 </Form.Item>
                 <Form.Item
