@@ -11,17 +11,25 @@ import {
     useSelect,
     RcFile,
 } from "@pankod/refine-antd";
+import { Permission, Role } from "@pankod/refine-appwrite";
 
 import MDEditor from "@uiw/react-md-editor";
 
 import { IPost, IPostVariables, ICategory } from "interfaces";
 
 export const PostsCreate: React.FC<IResourceComponentsProps> = () => {
+    
     const { formProps, saveButtonProps } = useForm<
         IPost,
         HttpError,
         IPostVariables
-    >();
+    >({
+    metaData: {
+        writePermissions: [Permission.read(Role.user("232"))],
+        readPermissions: [Permission.read(Role.user("232"))],
+    },
+});
+
 
     const { selectProps: categorySelectProps } = useSelect<ICategory>({
         resource: "6387d3dca5fd9352ca4f",
