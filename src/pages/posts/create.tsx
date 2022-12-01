@@ -67,7 +67,6 @@ export const PostsCreate: React.FC<IResourceComponentsProps> = () => {
                         },
                     ]}
                 >
-                    {identity?.$id}
                     <Input />
                 </Form.Item>
                 <Form.Item
