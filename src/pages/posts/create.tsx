@@ -34,7 +34,7 @@ export const PostsCreate: React.FC<IResourceComponentsProps> = () => {
         IPostVariables
     >({
     metaData: {
-        writePermissions: [Permission.read(Role.user(identity?.$id))],
+        writePermissions: [Permission.write(Role.user(identity?.$id))],
         readPermissions: [Permission.read(Role.user(identity?.$id))],
     },
 });
