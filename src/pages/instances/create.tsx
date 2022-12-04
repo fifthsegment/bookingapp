@@ -18,7 +18,7 @@ import MDEditor from "@uiw/react-md-editor";
 import { IPost, IPostVariables, ICategory } from "interfaces";
 import { authProvider } from "authProvider";
 
-export const PostsCreate: React.FC<IResourceComponentsProps> = () => {
+export const InstanceCreate: React.FC<IResourceComponentsProps> = () => {
     const [identity, setIdentity] = useState<any>(undefined);
     useEffect(() => {
         (async () => {
@@ -41,8 +41,8 @@ export const PostsCreate: React.FC<IResourceComponentsProps> = () => {
 
 
     const { selectProps: categorySelectProps } = useSelect<ICategory>({
-        resource: "6387d3dca5fd9352ca4f",
-        optionLabel: "title",
+        resource: "638a800e3dea2c9b5aaa",
+        optionLabel: "name",
         optionValue: "id",
     });
 

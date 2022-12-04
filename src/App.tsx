@@ -14,14 +14,15 @@ import routerProvider from "@pankod/refine-react-router-v6";
 import { appwriteClient } from "./appwriteClient";
 import { authProvider } from "./authProvider";
 import { Login } from './pages/login'
-import {  PostsList, PostsCreate } from "pages/posts";
+import {  InstanceList, InstanceCreate } from "pages/instances";
+import { ModelCreate, ModelList } from "pages/models";
 
 
 function App() {
   return (
     <Refine
       dataProvider={dataProvider(appwriteClient, {
-          databaseId: "638659048f13cd96cc0b",
+          databaseId: "638a8005d4be3f624af3",
       })}      
       authProvider={authProvider}
       notificationProvider={notificationProvider}
@@ -32,11 +33,19 @@ function App() {
       LoginPage={Login}
       resources={[
           {
-              name: "6386590ddd1858fa046a",
-              list: PostsList,
-              create: PostsCreate,
+              name: "638a805f149df1f6e4e5",
+              list: InstanceList,
+              create: InstanceCreate,
               options: {
-                  label: "Post",
+                  label: "Instance",
+              },
+          },
+          {
+              name: "638a800e3dea2c9b5aaa",
+              list: ModelList,
+              create: ModelCreate,
+              options: {
+                  label: "Model",
               },
           },
       ]}

@@ -1,0 +1,40 @@
+diff --git a/node_modules/@pankod/refine-appwrite/src/index.ts b/node_modules/@pankod/refine-appwrite/src/index.ts
+index 5ae3825..93ae13b 100644
+--- a/node_modules/@pankod/refine-appwrite/src/index.ts
++++ b/node_modules/@pankod/refine-appwrite/src/index.ts
+@@ -157,8 +157,6 @@ export const dataProvider = (
+         },
+         update: async ({ resource, id, variables, metaData }) => {
+             const permissions = [
+-                Permission.read(Role.any()),
+-                Permission.write(Role.any()),
+                 ...(metaData?.readPermissions ?? ""),
+                 ...(metaData?.writePermissions ?? ""),
+             ];
+@@ -179,8 +177,6 @@ export const dataProvider = (
+         },
+         create: async ({ resource, variables, metaData }) => {
+             const permissions = [
+-                Permission.read(Role.any()),
+-                Permission.write(Role.any()),
+                 ...(metaData?.readPermissions ?? ""),
+                 ...(metaData?.writePermissions ?? ""),
+             ];
+@@ -202,8 +198,6 @@ export const dataProvider = (
+         },
+         createMany: async ({ resource, variables, metaData }) => {
+             const permissions = [
+-                Permission.read(Role.any()),
+-                Permission.write(Role.any()),
+                 ...(metaData?.readPermissions ?? ""),
+                 ...(metaData?.writePermissions ?? ""),
+             ];
+@@ -270,8 +264,6 @@ export const dataProvider = (
+         },
+         updateMany: async ({ resource, ids, variables, metaData }) => {
+             const permissions = [
+-                Permission.read(Role.any()),
+-                Permission.write(Role.any()),
+                 ...(metaData?.readPermissions ?? ""),
+                 ...(metaData?.writePermissions ?? ""),
+             ];

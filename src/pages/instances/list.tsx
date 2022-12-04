@@ -12,11 +12,11 @@ import {
 
 import { IPost, ICategory } from "interfaces";
 
-export const PostsList: React.FC<IResourceComponentsProps> = () => {
+export const InstanceList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps, sorter } = useTable<IPost>({
         initialSorter: [
             {
-                field: "$id",
+                field: "name",
                 order: "asc",
             },
         ],
@@ -25,7 +25,7 @@ export const PostsList: React.FC<IResourceComponentsProps> = () => {
     const categoryIds =
         tableProps?.dataSource?.map((item) => item.categoryId) ?? [];
     const { data, isLoading } = useMany<ICategory>({
-        resource: "6387d3dca5fd9352ca4f",
+        resource: "638a800e3dea2c9b5aaa",
         ids: categoryIds,
         queryOptions: {
             enabled: categoryIds.length > 0,
@@ -35,16 +35,10 @@ export const PostsList: React.FC<IResourceComponentsProps> = () => {
     return (
         <List>
             <Table {...tableProps} rowKey="id">
+                <Table.Column dataIndex="name" title="Name" sorter />
                 <Table.Column
-                    dataIndex="id"
-                    title="ID"
-                    sorter
-                    defaultSortOrder={getDefaultSortOrder("id", sorter)}
-                />
-                <Table.Column dataIndex="title" title="Title" sorter />
-                <Table.Column
-                    dataIndex="categoryId"
-                    title="Category"
+                    dataIndex="modelId"
+                    title="Model"
                     render={(value) => {
                         if (isLoading) {
                             return <TextField value="Loading..." />;
