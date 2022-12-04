@@ -1,6 +1,7 @@
 export interface ICategory {
     id: string;
     title: string;
+    name: string;
 }
 
 export interface IFile {
@@ -19,6 +20,7 @@ export interface IPost {
     content: string;
     categoryId: string;
     images: string;
+    modelId: string;
 }
 
 export interface IPostVariables {

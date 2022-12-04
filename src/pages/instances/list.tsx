@@ -13,17 +13,10 @@ import {
 import { IPost, ICategory } from "interfaces";
 
 export const InstanceList: React.FC<IResourceComponentsProps> = () => {
-    const { tableProps, sorter } = useTable<IPost>({
-        initialSorter: [
-            {
-                field: "name",
-                order: "asc",
-            },
-        ],
-    });
+    const { tableProps, sorter } = useTable<IPost>();
 
     const categoryIds =
-        tableProps?.dataSource?.map((item) => item.categoryId) ?? [];
+        tableProps?.dataSource?.map((item) => item.modelId) ?? [];
     const { data, isLoading } = useMany<ICategory>({
         resource: "638a800e3dea2c9b5aaa",
         ids: categoryIds,
@@ -48,7 +41,7 @@ export const InstanceList: React.FC<IResourceComponentsProps> = () => {
                             <TextField
                                 value={
                                     data?.data.find((item) => item.id === value)
-                                        ?.title
+                                        ?.name
                                 }
                             />
                         );

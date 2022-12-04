@@ -59,8 +59,8 @@ export const InstanceCreate: React.FC<IResourceComponentsProps> = () => {
                 }}
             >
                 <Form.Item
-                    label="Title"
-                    name="title"
+                    label="Name"
+                    name="name"
                     rules={[
                         {
                             required: true,
@@ -70,8 +70,8 @@ export const InstanceCreate: React.FC<IResourceComponentsProps> = () => {
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    label="Category"
-                    name="categoryId"
+                    label="Model"
+                    name="modelId"
                     rules={[
                         {
                             required: true,
@@ -80,17 +80,7 @@ export const InstanceCreate: React.FC<IResourceComponentsProps> = () => {
                 >
                     <Select {...categorySelectProps} />
                 </Form.Item>
-                <Form.Item
-                    label="Content"
-                    name="content"
-                    rules={[
-                        {
-                            required: true,
-                        },
-                    ]}
-                >
-                    <MDEditor data-color-mode="light" />
-                </Form.Item>
+                
             </Form>
         </Create>
     );
