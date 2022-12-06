@@ -6,12 +6,13 @@ import {
     Space,
     EditButton,
     ShowButton,
+    DeleteButton,
 } from "@pankod/refine-antd";
 
-import { IPost } from "interfaces";
+import { IModel } from "interfaces";
 
 export const ModelList: React.FC<IResourceComponentsProps> = () => {
-    const { tableProps, sorter } = useTable<IPost>({
+    const { tableProps, sorter } = useTable<IModel>({
     });
 
 
@@ -19,7 +20,7 @@ export const ModelList: React.FC<IResourceComponentsProps> = () => {
         <List>
             <Table {...tableProps} rowKey="id">
                 <Table.Column dataIndex="name" title="Name" sorter />
-                <Table.Column<IPost>
+                <Table.Column<IModel>
                     title="Actions"
                     dataIndex="actions"
                     render={(_, record) => (
@@ -34,6 +35,8 @@ export const ModelList: React.FC<IResourceComponentsProps> = () => {
                                 size="small"
                                 recordItemId={record.id}
                             />
+                            <DeleteButton size="small" recordItemId={record.id} />
+
                         </Space>
                     )}
                 />

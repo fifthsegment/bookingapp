@@ -10,7 +10,7 @@ import {
 import { Permission, Role } from "@pankod/refine-appwrite";
 
 
-import { IPost, IPostVariables } from "interfaces";
+import { IModel, IModelVariables } from "interfaces";
 import { authProvider } from "authProvider";
 
 export const ModelCreate: React.FC<IResourceComponentsProps> = () => {
@@ -24,9 +24,9 @@ export const ModelCreate: React.FC<IResourceComponentsProps> = () => {
     }, []);
 
     const { formProps, saveButtonProps } = useForm<
-        IPost,
+        IModel,
         HttpError,
-        IPostVariables
+        IModelVariables
     >({
     metaData: {
         readPermissions: [Permission.read(Role.user(identity?.$id))],
@@ -48,6 +48,13 @@ export const ModelCreate: React.FC<IResourceComponentsProps> = () => {
                             required: true,
                         },
                     ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    label="Description"
+                    name="description"
                 >
                     <Input />
                 </Form.Item>

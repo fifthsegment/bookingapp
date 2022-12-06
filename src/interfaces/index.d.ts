@@ -1,7 +1,25 @@
-export interface ICategory {
+export interface IModel {
     id: string;
-    title: string;
     name: string;
+    description: string;
+}
+
+export interface IModelVariables {
+    id: string;
+    name: string;
+    description: string;
+}
+
+export interface IInstance {
+    id: string;
+    name: string;
+    modelId: string;
+}
+
+export interface IInstanceVariables {
+    id: string;
+    name: string;
+    modelId: string;
 }
 
 export interface IFile {
@@ -14,19 +32,3 @@ export interface IFile {
     url: string;
 }
 
-export interface IPost {
-    id: string;
-    title: string;
-    content: string;
-    categoryId: string;
-    images: string;
-    modelId: string;
-}
-
-export interface IPostVariables {
-    id: string;
-    title: string;
-    content: string;
-    categoryId: string;
-    images: string;
-}

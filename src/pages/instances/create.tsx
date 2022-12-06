@@ -15,8 +15,9 @@ import { Permission, Role } from "@pankod/refine-appwrite";
 
 import MDEditor from "@uiw/react-md-editor";
 
-import { IPost, IPostVariables, ICategory } from "interfaces";
+import {  IInstanceVariables, IModel, IInstance } from "interfaces";
 import { authProvider } from "authProvider";
+import { modelCollectionId } from "config";
 
 export const InstanceCreate: React.FC<IResourceComponentsProps> = () => {
     const [identity, setIdentity] = useState<any>(undefined);
@@ -29,9 +30,9 @@ export const InstanceCreate: React.FC<IResourceComponentsProps> = () => {
     }, []);
 
     const { formProps, saveButtonProps } = useForm<
-        IPost,
+        IInstance,
         HttpError,
-        IPostVariables
+        IInstanceVariables
     >({
     metaData: {
         writePermissions: [Permission.write(Role.user(identity?.$id))],
@@ -40,8 +41,8 @@ export const InstanceCreate: React.FC<IResourceComponentsProps> = () => {
 });
 
 
-    const { selectProps: categorySelectProps } = useSelect<ICategory>({
-        resource: "638a800e3dea2c9b5aaa",
+    const { selectProps: categorySelectProps } = useSelect<IModel>({
+        resource: modelCollectionId,
         optionLabel: "name",
         optionValue: "id",
     });
@@ -51,12 +52,6 @@ export const InstanceCreate: React.FC<IResourceComponentsProps> = () => {
             <Form
                 {...formProps}
                 layout="vertical"
-                onFinish={(values) => {
-                    formProps.onFinish?.({
-                        ...values,
-                        images: JSON.stringify(values.images),
-                    });
-                }}
             >
                 <Form.Item
                     label="Name"

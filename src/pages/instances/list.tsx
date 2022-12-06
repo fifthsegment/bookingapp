@@ -8,17 +8,19 @@ import {
     EditButton,
     ShowButton,
     getDefaultSortOrder,
+    DeleteButton,
 } from "@pankod/refine-antd";
 
-import { IPost, ICategory } from "interfaces";
+import { IInstance, IModel } from "interfaces";
+import { modelCollectionId } from "config";
 
 export const InstanceList: React.FC<IResourceComponentsProps> = () => {
-    const { tableProps, sorter } = useTable<IPost>();
+    const { tableProps, sorter } = useTable<IInstance>();
 
     const categoryIds =
         tableProps?.dataSource?.map((item) => item.modelId) ?? [];
-    const { data, isLoading } = useMany<ICategory>({
-        resource: "638a800e3dea2c9b5aaa",
+    const { data, isLoading } = useMany<IModel>({
+        resource: modelCollectionId,
         ids: categoryIds,
         queryOptions: {
             enabled: categoryIds.length > 0,
@@ -47,7 +49,7 @@ export const InstanceList: React.FC<IResourceComponentsProps> = () => {
                         );
                     }}
                 />
-                <Table.Column<IPost>
+                <Table.Column<IInstance>
                     title="Actions"
                     dataIndex="actions"
                     render={(_, record) => (
@@ -62,6 +64,7 @@ export const InstanceList: React.FC<IResourceComponentsProps> = () => {
                                 size="small"
                                 recordItemId={record.id}
                             />
+                            <DeleteButton size="small" recordItemId={record.id} />
                         </Space>
                     )}
                 />
