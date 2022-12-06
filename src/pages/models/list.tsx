@@ -7,9 +7,13 @@ import {
     EditButton,
     ShowButton,
     DeleteButton,
+    Button,
 } from "@pankod/refine-antd";
 
 import { IModel } from "interfaces";
+import { appwriteClient } from "appwriteClient";
+import { databaseId, instanceCollectionId } from "config";
+import { Databases, Query } from "@pankod/refine-appwrite";
 
 export const ModelList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps, sorter } = useTable<IModel>({

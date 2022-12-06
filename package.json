@@ -1,6 +1,7 @@
 {
   "name": "bookingapp",
   "version": "0.1.0",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@pankod/refine-antd": "^3.18.0",

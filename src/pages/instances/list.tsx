@@ -9,10 +9,13 @@ import {
     ShowButton,
     getDefaultSortOrder,
     DeleteButton,
+    Button,
 } from "@pankod/refine-antd";
 
 import { IInstance, IModel } from "interfaces";
-import { modelCollectionId } from "config";
+import { databaseId, instanceCollectionId, modelCollectionId } from "config";
+import { Databases, Query } from "@pankod/refine-appwrite";
+import { appwriteClient } from "appwriteClient";
 
 export const InstanceList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps, sorter } = useTable<IInstance>();
@@ -26,6 +29,8 @@ export const InstanceList: React.FC<IResourceComponentsProps> = () => {
             enabled: categoryIds.length > 0,
         },
     });
+
+
 
     return (
         <List>
@@ -54,6 +59,7 @@ export const InstanceList: React.FC<IResourceComponentsProps> = () => {
                     dataIndex="actions"
                     render={(_, record) => (
                         <Space>
+
                             <EditButton
                                 hideText
                                 size="small"
