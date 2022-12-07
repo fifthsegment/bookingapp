@@ -22,6 +22,9 @@ export const InstanceList: React.FC<IResourceComponentsProps> = () => {
 
     const categoryIds =
         tableProps?.dataSource?.map((item) => item.modelId) ?? [];
+
+    const tableData = tableProps?.dataSource || [];
+
     const { data, isLoading } = useMany<IModel>({
         resource: modelCollectionId,
         ids: categoryIds,
@@ -29,8 +32,6 @@ export const InstanceList: React.FC<IResourceComponentsProps> = () => {
             enabled: categoryIds.length > 0,
         },
     });
-
-
 
     return (
         <List>
@@ -48,6 +49,20 @@ export const InstanceList: React.FC<IResourceComponentsProps> = () => {
                             <TextField
                                 value={
                                     data?.data.find((item) => item.id === value)
+                                        ?.name
+                                }
+                            />
+                        );
+                    }}
+                />
+                <Table.Column
+                    dataIndex="linkedFromInstance"
+                    title="Linked to"
+                    render={(value) => {
+                        return (
+                            <TextField
+                                value={
+                                    tableData.find((item) => item.id === value)
                                         ?.name
                                 }
                             />

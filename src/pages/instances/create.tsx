@@ -17,7 +17,7 @@ import MDEditor from "@uiw/react-md-editor";
 
 import {  IInstanceVariables, IModel, IInstance } from "interfaces";
 import { authProvider } from "authProvider";
-import { modelCollectionId } from "config";
+import { instanceCollectionId, modelCollectionId } from "config";
 
 export const InstanceCreate: React.FC<IResourceComponentsProps> = () => {
     const [identity, setIdentity] = useState<any>(undefined);
@@ -43,6 +43,12 @@ export const InstanceCreate: React.FC<IResourceComponentsProps> = () => {
 
     const { selectProps: categorySelectProps } = useSelect<IModel>({
         resource: modelCollectionId,
+        optionLabel: "name",
+        optionValue: "id",
+    });
+
+    const { selectProps: instanceSelectProps } = useSelect<IModel>({
+        resource: instanceCollectionId,
         optionLabel: "name",
         optionValue: "id",
     });
@@ -74,6 +80,13 @@ export const InstanceCreate: React.FC<IResourceComponentsProps> = () => {
                     ]}
                 >
                     <Select {...categorySelectProps} />
+                </Form.Item>
+
+                <Form.Item
+                    label="LinkedEntity"
+                    name="linkedFromInstance"
+                >
+                    <Select {...instanceSelectProps} />
                 </Form.Item>
                 
             </Form>

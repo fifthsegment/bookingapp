@@ -12,7 +12,7 @@ import {
 
 
 import { IInstance, IModel } from "interfaces";
-import { modelCollectionId } from "config";
+import { instanceCollectionId, modelCollectionId } from "config";
 
 export const InstanceEdit: React.FC<IResourceComponentsProps> = () => {
     const { formProps, saveButtonProps, queryResult } = useForm<IInstance>();
@@ -20,6 +20,11 @@ export const InstanceEdit: React.FC<IResourceComponentsProps> = () => {
     const postData = queryResult?.data?.data;
     const { selectProps: categorySelectProps } = useSelect<IModel>({
         resource: modelCollectionId,
+        optionLabel: "name",
+        optionValue: "id",
+    });
+    const { selectProps: instanceSelectProps } = useSelect<IModel>({
+        resource: instanceCollectionId,
         optionLabel: "name",
         optionValue: "id",
     });
@@ -48,6 +53,13 @@ export const InstanceEdit: React.FC<IResourceComponentsProps> = () => {
                     ]}
                 >
                     <Select {...categorySelectProps} />
+                </Form.Item>
+
+                <Form.Item
+                    label="LinkedEntity"
+                    name="linkedFromInstance"
+                >
+                    <Select {...instanceSelectProps} />
                 </Form.Item>
 
             </Form>

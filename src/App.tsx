@@ -17,6 +17,7 @@ import { Login } from './pages/login'
 import {  InstanceList, InstanceCreate, InstanceEdit } from "pages/instances";
 import { ModelCreate, ModelList } from "pages/models";
 import { databaseId, instanceCollectionId, modelCollectionId } from "config";
+import { ListDummy } from "pages/dummy";
 
 
 function App() {
@@ -33,6 +34,13 @@ function App() {
       routerProvider={routerProvider}
       LoginPage={Login}
       resources={[
+          {
+              name: "test",
+              list: ListDummy,
+              options: {
+                  label: "Test",
+              },
+          },
           {
               name: instanceCollectionId,
               list: InstanceList,
